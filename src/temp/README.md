@@ -1,0 +1,3 @@
+This directory serves as a temporary location for the original [shadcn-ui](https://github.com/shadcn-ui/ui) project. We are storing it here to expedite achieving our [Minimum Viable Product (MVP)](https://en.wikipedia.org/wiki/Minimum_viable_product). In the future, we will reimplement and integrate this component into our project's structure for a more refined and cohesive implementation.
+
+Please note that [shadcn-ui](https://github.com/shadcn-ui/ui) complies with the MIT License.
