@@ -1,12 +1,7 @@
-// plop-templates/component.tsx.hbs
 import React from 'react';
-import AdminPanelLayout from '../../features/AdminPanel/_temp/admin-panel/admin-panel-layout';
-import { Dashboard } from '../Dashboard/Dashboard';
-
-// pages/DashboardPage.tsx
-// import React from 'react';
-// import { AdminPanelLayout } from './AdminPanelLayout';
-// import { Dashboard } from './Dashboard';
+// import AdminPanelLayout from '../../features/AdminPanel/_temp/admin-panel/admin-panel-layout';
+import { Dashboard } from '../../components/pages/Dashboard/Dashboard';
+import { AdminPanelLayout } from '../../features/AdminPanel/components/templates/AdminPanelLayout';
 
 export const DashboardPage: React.FC = () => {
     return (

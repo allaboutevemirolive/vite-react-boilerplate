@@ -11,13 +11,17 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
+import { Route as PostsImport } from './routes/posts'
 import { Route as MusicImport } from './routes/music'
 import { Route as DashboardImport } from './routes/dashboard'
-import { Route as AdminImport } from './routes/admin'
 import { Route as AboutImport } from './routes/about'
-import { Route as IndexImport } from './routes/index'
 
 // Create/Update Routes
+
+const PostsRoute = PostsImport.update({
+  path: '/posts',
+  getParentRoute: () => rootRoute,
+} as any)
 
 const MusicRoute = MusicImport.update({
   path: '/music',
@@ -29,18 +33,8 @@ const DashboardRoute = DashboardImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
-const AdminRoute = AdminImport.update({
-  path: '/admin',
-  getParentRoute: () => rootRoute,
-} as any)
-
 const AboutRoute = AboutImport.update({
   path: '/about',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const IndexRoute = IndexImport.update({
-  path: '/',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -48,25 +42,11 @@ const IndexRoute = IndexImport.update({
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexImport
-      parentRoute: typeof rootRoute
-    }
     '/about': {
       id: '/about'
       path: '/about'
       fullPath: '/about'
       preLoaderRoute: typeof AboutImport
-      parentRoute: typeof rootRoute
-    }
-    '/admin': {
-      id: '/admin'
-      path: '/admin'
-      fullPath: '/admin'
-      preLoaderRoute: typeof AdminImport
       parentRoute: typeof rootRoute
     }
     '/dashboard': {
@@ -83,17 +63,23 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MusicImport
       parentRoute: typeof rootRoute
     }
+    '/posts': {
+      id: '/posts'
+      path: '/posts'
+      fullPath: '/posts'
+      preLoaderRoute: typeof PostsImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
 // Create and export the route tree
 
 export const routeTree = rootRoute.addChildren({
-  IndexRoute,
   AboutRoute,
-  AdminRoute,
   DashboardRoute,
   MusicRoute,
+  PostsRoute,
 })
 
 /* prettier-ignore-end */
@@ -104,27 +90,23 @@ export const routeTree = rootRoute.addChildren({
     "__root__": {
       "filePath": "__root.ts",
       "children": [
-        "/",
         "/about",
-        "/admin",
         "/dashboard",
-        "/music"
+        "/music",
+        "/posts"
       ]
-    },
-    "/": {
-      "filePath": "index.ts"
     },
     "/about": {
       "filePath": "about.ts"
-    },
-    "/admin": {
-      "filePath": "admin.ts"
     },
     "/dashboard": {
       "filePath": "dashboard.ts"
     },
     "/music": {
       "filePath": "music.ts"
+    },
+    "/posts": {
+      "filePath": "posts.ts"
     }
   }
 }

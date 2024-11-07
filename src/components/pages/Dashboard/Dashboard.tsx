@@ -1,14 +1,12 @@
-// plop-templates/component.tsx.hbs
 import React from 'react';
-import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from '../../temp/default/ui/breadcrumb';
+import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from '../../../temp/default/ui/breadcrumb';
 import { Link } from '@tanstack/react-router';
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '../../temp/default/ui/tooltip';
-import { Switch } from '../../temp/default/ui/switch';
-import { Label } from '../../temp/default/ui/label';
-import { Content } from '../../components/templates/Content';
-// import { useSidebar } from '../../temp/default/ui/sidebar';
-import { useStore } from '../../hooks/use-store';
-import { useSidebar } from '../../hooks/use-sidebar';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '../../../temp/default/ui/tooltip';
+import { Switch } from '../../../temp/default/ui/switch';
+import { Label } from '../../../temp/default/ui/label';
+import { Content } from '../../templates/Content';
+import { useStore } from '../../../hooks/use-store';
+import { useSidebar } from '../../../hooks/use-sidebar';
 
 export const Dashboard: React.FC = () => {
     const sidebar = useStore(useSidebar, (x) => x);
