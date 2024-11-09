@@ -1,17 +1,17 @@
 // import { Navbar } from "../../../../admin-panel/navbar";
 
-import { Navbar } from "../../../../components/organisms/Navbar";
+// import { Navbar } from "../../../../components/organisms/Navbar";
 
-interface ContentLayoutProps {
-    title: string;
-    children: React.ReactNode;
-}
+// interface ContentLayoutProps {
+//     title: string;
+//     children: React.ReactNode;
+// }
 
-export function ContentLayout({ title, children }: ContentLayoutProps) {
-    return (
-        <div>
-            <Navbar title={title} />
-            <div className="container pt-8 pb-8 px-4 sm:px-8">{children}</div>
-        </div>
-    );
-}
+// export function ContentLayout({ title, children }: ContentLayoutProps) {
+//     return (
+//         <div>
+//             <Navbar title={title} />
+//             <div className="container pt-8 pb-8 px-4 sm:px-8">{children}</div>
+//         </div>
+//     );
+// }

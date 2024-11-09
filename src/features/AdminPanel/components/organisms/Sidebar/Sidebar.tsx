@@ -1,9 +1,3 @@
-// import { SidebarToggle } from "./SidebarToggle";
-// import { SidebarContent } from "./SidebarContent";
-// import { cn } from "../../../../lib/utils";
-// import { useStore } from "../../../../hooks/use-store";
-// import { useSidebar } from "../../../../hooks/use-sidebar";
-
 import { useSidebar } from "../../../../../hooks/use-sidebar";
 import { useStore } from "../../../../../hooks/use-store";
 import { SidebarToggle } from "../../../_temp/admin-panel/sidebar-toggle";

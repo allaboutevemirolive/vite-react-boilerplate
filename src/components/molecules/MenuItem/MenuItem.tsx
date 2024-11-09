@@ -1,5 +1,3 @@
-// import { MenuItemButton } from "./MenuItemButton";
-
 import { LucideIcon } from "lucide-react";
 import { MenuItemButton } from "../../../features/AdminPanel/components/molecules/MenuItemButton";
 

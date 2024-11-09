@@ -6,9 +6,10 @@ import React from 'react';
 import { PanelsTopLeft } from "lucide-react";
 import { ArrowRightIcon, GitHubLogoIcon } from "@radix-ui/react-icons";
 import { Button } from '../../../temp/default/ui/button';
-import { ModeToggle } from '../../molecules/ModeToggle';
+// import { ModeToggle } from '../../molecules/ModeToggle';
 import { Link } from '@tanstack/react-router';
 import { Image } from '../../atoms/Image';
+import { ModeToggle } from '../../../features/AdminPanel/components/molecules/ModeToggle';
 
 export const Music: React.FC = () => {
     return (

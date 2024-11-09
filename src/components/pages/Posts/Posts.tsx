@@ -1,40 +1,21 @@
-// plop-templates/component.tsx.hbs
 import React from 'react';
-import { ContentLayout } from '../../../features/AdminPanel/_temp/admin-panel/content-layout';
-import {
-    Breadcrumb,
-    BreadcrumbItem,
-    BreadcrumbLink,
-    BreadcrumbList,
-    BreadcrumbPage,
-    BreadcrumbSeparator
-} from "../../../ui/breadcrumb";
-import { Link } from '@tanstack/react-router';
-
+// import { ContentLayout } from '../../../features/AdminPanel/_temp/admin-panel/content-layout';
+import { ReusableBreadcrumb } from '../../../features/AdminPanel/components/molecules/ReusableBreadcrumb';
+import { PlaceholderContent } from '../../../features/AdminPanel/components/molecules/PlaceholderContent';
+import { ContentLayout } from '../../../features/AdminPanel/components/templates/ContentLayout';
 
 export const Posts: React.FC = () => {
+
+    const breadcrumbItems = [
+        { label: 'Home', href: '/' },
+        { label: 'Dashboard', href: '/dashboard' },
+        { label: 'Posts', href: '/posts' },
+    ];
+
     return (
         <ContentLayout title="New Post">
-            <Breadcrumb>
-                <BreadcrumbList>
-                    <BreadcrumbItem>
-                        <BreadcrumbLink asChild>
-                            <Link href="/">Home</Link>
-                        </BreadcrumbLink>
-                    </BreadcrumbItem>
-                    <BreadcrumbSeparator />
-                    <BreadcrumbItem>
-                        <BreadcrumbLink asChild>
-                            <Link href="/dashboard">Dashboard</Link>
-                        </BreadcrumbLink>
-                    </BreadcrumbItem>
-                    <BreadcrumbSeparator />
-                    <BreadcrumbItem>
-                        <BreadcrumbPage>Posts</BreadcrumbPage>
-                    </BreadcrumbItem>
-                </BreadcrumbList>
-            </Breadcrumb>
-            {/*<PlaceholderContent />*/}
+            <ReusableBreadcrumb items={breadcrumbItems} />
+            <PlaceholderContent />
         </ContentLayout>
     );
 };
