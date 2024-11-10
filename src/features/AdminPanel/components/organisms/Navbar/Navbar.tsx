@@ -1,7 +1,8 @@
 // import { ModeToggle } from "../../../../../components/molecules/ModeToggle";
-import { UserNav } from "../../../../../components/organisms/UserNav";
+// import { UserNav } from "../../../../../components/organisms/UserNav";
 import { ModeToggle } from "../../molecules/ModeToggle";
 import { SheetMenu } from "../SheetMenu";
+import { UserNav } from "../UserNav";
 
 interface NavbarProps {
     title: string;

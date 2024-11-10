@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Dot } from "lucide-react";
-import { Button } from "../../../ui/button";
-import { cn } from "../../../lib/utils";
+import { Button } from "../../../../../ui/button";
+import { cn } from "../../../../../lib/utils";
 
 interface SubMenuButtonProps {
     href: string;

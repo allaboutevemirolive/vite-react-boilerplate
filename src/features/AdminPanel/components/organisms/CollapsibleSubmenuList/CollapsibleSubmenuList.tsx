@@ -1,7 +1,8 @@
 // import { SubMenuButton } from "../../molecules/SubMenuButton";
 // import { Submenu } from "../types/menu";
 
-import { SubMenuButton } from "../../../../../components/molecules/SubMenuButton";
+// import { SubMenuButton } from "../../../../../components/molecules/SubMenuButton";
+import { SubMenuButton } from "../../molecules/SubMenuButton";
 import { Submenu } from "../CollapsibleMenu/types";
 
 interface CollapsibleSubmenuListProps {

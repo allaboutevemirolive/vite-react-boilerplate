@@ -1,8 +1,9 @@
 // SignOutButton.tsx
-import { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider } from "../../../ui/tooltip";
-import { Button } from "../../../ui/button";
+import { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider } from "../../../../../ui/tooltip";
+import { Button } from "../../../../../ui/button";
 import { LogOut } from "lucide-react";
-import { cn } from "../../../lib/utils";
+// import { TooltipProvider } from "../../../../../ui/tooltip";
+import { cn } from "../../../../../lib/utils";
 
 interface SignOutButtonProps {
     isOpen: boolean | undefined;

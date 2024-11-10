@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
-import { Submenu } from "../../../types/dropdown";
+// import { Submenu } from "../../../types/dropdown";
 import { DropdownMenuItem } from "../../../../../ui/dropdown-menu";
+import { Submenu } from "./types";
 // import { DropdownMenuItem } from "../../../ui/dropdown-menu";
 // import { Submenu } from "./types";
 

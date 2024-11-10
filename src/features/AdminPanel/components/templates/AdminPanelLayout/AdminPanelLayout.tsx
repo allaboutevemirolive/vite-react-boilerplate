@@ -1,8 +1,6 @@
 import { useSidebar } from "../../../../../hooks/use-sidebar";
 import { useStore } from "../../../../../hooks/use-store";
 import { LayoutProps } from "../../../../../Layouts/layout";
-// TODO: Don't remove this
-// import { Sidebar } from "../../../_temp/admin-panel/sidebar";
 import { Footer } from "../../organisms/Footer";
 import { Sidebar } from "../../organisms/Sidebar";
 import { getTransitionClasses } from "./AdminPanelLayout.styles";

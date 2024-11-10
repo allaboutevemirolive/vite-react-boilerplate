@@ -1,6 +1,7 @@
 // MenuGroupLabel.tsx
-import { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider } from "../../../ui/tooltip";
+import { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider } from "../../../../../ui/tooltip";
 import { Ellipsis } from "lucide-react";
+// import { TooltipProvider } from "../../../../../ui/tooltip";
 
 interface MenuGroupLabelProps {
     isOpen: boolean | undefined;

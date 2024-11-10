@@ -1,7 +1,6 @@
 // plop-templates/test.tsx.hbs
-import { it, describe } from 'vitest';
-describe('Music', () => {
+describe('SidebarToggle', () => {
     it('should render successfully', () => {
-
+    
     });
 });

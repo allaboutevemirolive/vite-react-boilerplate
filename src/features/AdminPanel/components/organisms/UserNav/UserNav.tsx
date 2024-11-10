@@ -3,14 +3,14 @@ import React from 'react';
 
 import { LayoutGrid, LogOut, User } from "lucide-react";
 
-import { Button } from "../../../ui/button";
-import { Avatar, AvatarFallback, AvatarImage } from "../../../ui/avatar";
+import { Button } from "../../../../../ui/button";
+import { Avatar, AvatarFallback, AvatarImage } from "../../../../../ui/avatar";
 import {
     Tooltip,
     TooltipContent,
     TooltipTrigger,
     TooltipProvider
-} from "../../../ui/tooltip";
+} from "../../../../../ui/tooltip";
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -19,8 +19,9 @@ import {
     DropdownMenuLabel,
     DropdownMenuSeparator,
     DropdownMenuTrigger
-} from "../../../ui/dropdown-menu";
+} from "../../../../../ui/dropdown-menu";
 import { Link } from '@tanstack/react-router';
+// import { DropdownMenu } from '../../../../../ui/dropdown-menu';
 
 export const UserNav: React.FC = () => {
     return (

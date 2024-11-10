@@ -1,5 +1,6 @@
 import { LucideIcon } from "lucide-react";
-import { MenuItemButton } from "../../../features/AdminPanel/components/molecules/MenuItemButton";
+import { MenuItemButton } from "../MenuItemButton";
+// import { MenuItemButton } from "../../../features/AdminPanel/components/molecules/MenuItemButton";
 
 interface MenuItemProps {
     href: string;

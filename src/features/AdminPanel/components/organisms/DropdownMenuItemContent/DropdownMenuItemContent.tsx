@@ -1,9 +1,10 @@
 import { Button } from "../../../../../ui/button";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "../../../../../ui/dropdown-menu";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "../../../../../ui/tooltip";
-import { DropdownMenuItemContentProps } from "../../../types/dropdown";
+// import { DropdownMenuItemContentProps } from "../../../types/dropdown";
 import { ButtonContent } from "../../molecules/ButtonContent";
 import { SubmenuItems } from "../../molecules/SubmenuItems";
+import { DropdownMenuItemContentProps } from "./types";
 
 export function DropdownMenuItemContent({
     icon: Icon,

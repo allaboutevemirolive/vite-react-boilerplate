@@ -1,6 +1,6 @@
 import { useSidebar } from "../../../../../hooks/use-sidebar";
 import { useStore } from "../../../../../hooks/use-store";
-import { SidebarToggle } from "../../../_temp/admin-panel/sidebar-toggle";
+import { SidebarToggle } from "../../molecules/SidebarToggle";
 import { SidebarContainer } from "../../templates/SidebarContainer";
 import { SidebarContent } from "../SidebarContent";
 
