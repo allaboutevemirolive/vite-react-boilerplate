@@ -9,6 +9,7 @@ interface MusicPlayerContextProps {
     duration: number;
     volume: number;
     isMuted: boolean;
+    isAutoPlayEnabled: boolean; // New prop
     handleSongSelect: (song: Song) => void;
     handlePrevious: () => void;
     handleNext: () => void;
@@ -16,6 +17,8 @@ interface MusicPlayerContextProps {
     handleSeek: (time: number) => void;
     handleVolumeChange: (volume: number) => void;
     toggleMute: () => void;
+    toggleAutoPlay: () => void; // New function
+    onVideoEnd: () => void; // New function
 }
 
 const DEFAULT_SONG: Song = {
@@ -27,7 +30,12 @@ const DEFAULT_SONG: Song = {
 
 export const PLAYLIST_DATA: Song[] = [
     { id: '1', title: 'Sample Song', artist: 'Sample Artist', videoId: 'CanCZktm0TQ' },
-    { id: '2', title: 'Another Song', artist: 'Another Artist', videoId: 'dQw4w9WgXcQ' }
+    // { id: '2', title: 'Another Song', artist: 'Another Artist', videoId: 'dQw4w9WgXcQ' },
+    { id: '3', title: 'Strip That Down', artist: 'Liam Payne Featuring Quavo', videoId: 'vSW2M-BB1NE' },
+    { id: '4', title: 'Chandelier', artist: 'Sia', videoId: '2vjPBrBU-TM' },
+    { id: '5', title: 'Side To Side', artist: 'Ariana Grande Featuring Nicki Minaj', videoId: 'SXiSVQZLje8' },
+    { id: '6', title: 'The Monster', artist: 'Eminem Featuring Rihanna', videoId: 'EHkozMIXZ8w' },
+    { id: '7', title: 'Dusk Till Dawn', artist: 'ZAYN Featuring Sia', videoId: 'tt2k8PGm-TI' }
 ];
 
 export const MusicPlayerContext = createContext<MusicPlayerContextProps>({} as MusicPlayerContextProps);
@@ -39,10 +47,10 @@ export const MusicPlayerProvider: React.FC<{ children: ReactNode }> = ({ childre
     const [duration, setDuration] = useState(0);
     const [volume, setVolume] = useState(100);
     const [isMuted, setIsMuted] = useState(false);
+    const [isAutoPlayEnabled, setIsAutoPlayEnabled] = useState(true); // New state
     const playerRef = useRef<any>(null);
 
     useEffect(() => {
-        // Reset time when song changes
         setCurrentTime(0);
         setDuration(0);
     }, [currentSong]);
@@ -75,6 +83,15 @@ export const MusicPlayerProvider: React.FC<{ children: ReactNode }> = ({ childre
         }
     };
 
+    // New function to handle video end
+    const onVideoEnd = () => {
+        if (isAutoPlayEnabled) {
+            handleNext();
+        } else {
+            setIsPlaying(false);
+        }
+    };
+
     const handleSeek = (time: number) => {
         if (playerRef.current?.internalPlayer) {
             playerRef.current.internalPlayer.seekTo(time);
@@ -99,6 +116,10 @@ export const MusicPlayerProvider: React.FC<{ children: ReactNode }> = ({ childre
         }
     };
 
+    const toggleAutoPlay = () => {
+        setIsAutoPlayEnabled(prev => !prev);
+    };
+
     return (
         <MusicPlayerContext.Provider
             value={{
@@ -109,6 +130,7 @@ export const MusicPlayerProvider: React.FC<{ children: ReactNode }> = ({ childre
                 duration,
                 volume,
                 isMuted,
+                isAutoPlayEnabled,
                 handleSongSelect,
                 handlePrevious,
                 handleNext,
@@ -116,6 +138,8 @@ export const MusicPlayerProvider: React.FC<{ children: ReactNode }> = ({ childre
                 handleSeek,
                 handleVolumeChange,
                 toggleMute,
+                toggleAutoPlay,
+                onVideoEnd,
             }}
         >
             {children}
