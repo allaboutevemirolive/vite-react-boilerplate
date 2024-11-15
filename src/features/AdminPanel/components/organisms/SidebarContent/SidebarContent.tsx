@@ -1,4 +1,3 @@
-// import { Menu } from "../../../../../components/organisms/Menu";
 import { useSidebar } from "../../../../../hooks/use-sidebar";
 import { SidebarHeader } from "../../molecules/SidebarHeader";
 import { Menu } from "../Menu/Menu";

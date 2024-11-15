@@ -5,7 +5,8 @@ import {
     Bookmark,
     SquarePen,
     LayoutGrid,
-    LucideIcon
+    LucideIcon,
+    Music
 } from "lucide-react";
 
 type Submenu = {
@@ -27,6 +28,7 @@ type Group = {
     menus: Menu[];
 };
 
+// NOTE: pathname is the current link argument.
 export function getMenuList(pathname: string): Group[] {
     return [
         {
@@ -57,6 +59,11 @@ export function getMenuList(pathname: string): Group[] {
                             label: "New Post"
                         }
                     ]
+                },
+                {
+                    href: "/music",
+                    label: "Music",
+                    icon: Music
                 },
                 {
                     href: "/categories",
