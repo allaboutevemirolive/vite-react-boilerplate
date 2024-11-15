@@ -3,8 +3,6 @@ import { ReusableBreadcrumb } from '../../../features/AdminPanel/components/mole
 // import { PlaceholderContent } from '../../../features/AdminPanel/components/molecules/PlaceholderContent';
 import { ContentLayout } from '../../../features/AdminPanel/components/templates/ContentLayout';
 import { MusicPlayer } from '../../../features/MusicPlayer/components/pages/MusicPlayer';
-// import MusicPlayer from '../../../features/MusicPlayer/components/pages/MusicPlayer/MusicPlayer';
-// import { MusicPlayer } from '../../../features/MusicPlayer/components/pages/MusicPlayer';
 
 export const Music: React.FC = () => {
 

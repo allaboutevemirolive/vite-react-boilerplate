@@ -1,11 +1,79 @@
 import React, { useContext } from 'react';
+import styled from 'styled-components';
 import { MusicPlayerContext } from '../../../store/MusicPlayerContext';
 import { SkipButton } from '../../molecules/SkipButton';
 import { PlayPauseButton } from '../../molecules/PlayPauseButton';
 import { ProgressBar } from '../../molecules/ProgressBar';
 import { VolumeControl } from '../../molecules/VolumeControl';
-
 import { RepeatIcon } from 'lucide-react';
+
+const Container = styled.div`
+    height: 8rem; // 128px = 8rem
+    background-color: #1f2937; // gray-900
+    border-top: 1px solid #2d3748; // gray-800
+    padding: 0.75rem 1.5rem; // py-3 px-6
+    display: flex;
+    flex-direction: column;
+`;
+
+const ControlsRow = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1rem; // mt-4
+`;
+
+const SongInfo = styled.div`
+    display: flex;
+    align-items: center;
+    gap: 1rem; // space-x-4
+`;
+
+const SongImage = styled.img`
+    width: 3rem; // w-12
+    height: 3rem; // h-12
+    border-radius: 0.5rem; // rounded-lg
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); // shadow-lg
+`;
+
+const SongDetails = styled.div`
+    max-width: 12.5rem; // max-w-[200px]
+`;
+
+const SongTitle = styled.div`
+    font-weight: 500; // font-medium
+    color: white;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+`;
+
+const SongArtist = styled.div`
+    color: #9ca3af; // text-gray-400
+    font-size: 0.875rem; // text-sm
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+`;
+
+const PlaybackControls = styled.div`
+    display: flex;
+    align-items: center;
+    gap: 1.5rem; // space-x-6
+`;
+
+const AutoPlayButton = styled.button`
+    color: #9ca3af; // text-gray-400
+    transition: color 0.2s ease;
+
+    &:hover {
+        color: white;
+    }
+
+    &.active {
+        color: white;
+    }
+`;
 
 const PlayerControls: React.FC = () => {
     const {
@@ -26,47 +94,33 @@ const PlayerControls: React.FC = () => {
     } = useContext(MusicPlayerContext);
 
     return (
-        <div className="h-32 bg-gray-900 border-t border-gray-800 px-6 py-3 flex flex-col">
-            <ProgressBar
-                currentTime={currentTime}
-                duration={duration}
-                onSeek={handleSeek}
-            />
-            
-            <div className="flex items-center justify-between mt-4">
+        <Container>
+            <ProgressBar currentTime={currentTime} duration={duration} onSeek={handleSeek} />
+
+            <ControlsRow>
                 {/* Song Info */}
-                <div className="flex items-center space-x-4">
-                    <img
-                        src="/api/placeholder/48/48"
-                        alt={`${currentSong?.title} artwork`}
-                        className="w-12 h-12 rounded-lg shadow-lg"
-                    />
-                    <div>
-                        <div className="font-medium text-white truncate max-w-[200px]">
-                            {currentSong?.title}
-                        </div>
-                        <div className="text-gray-400 text-sm truncate max-w-[200px]">
-                            {currentSong?.artist}
-                        </div>
-                    </div>
-                </div>
+                <SongInfo>
+                    <SongImage src="/api/placeholder/48/48" alt={`${currentSong?.title} artwork`} />
+                    <SongDetails>
+                        <SongTitle>{currentSong?.title}</SongTitle>
+                        <SongArtist>{currentSong?.artist}</SongArtist>
+                    </SongDetails>
+                </SongInfo>
 
                 {/* Playback Controls */}
-                <div className="flex items-center space-x-6">
+                <PlaybackControls>
                     <SkipButton direction="previous" onClick={handlePrevious} />
                     <PlayPauseButton isPlaying={isPlaying} onClick={togglePlayPause} />
                     <SkipButton direction="next" onClick={handleNext} />
-                    <button
+                    <AutoPlayButton
                         onClick={toggleAutoPlay}
-                        className={`text-gray-400 hover:text-white transition-colors ${
-                            isAutoPlayEnabled ? 'text-white' : 'text-gray-400'
-                        }`}
+                        className={isAutoPlayEnabled ? 'active' : ''}
                         aria-label="Toggle autoplay"
                         title="Toggle autoplay"
                     >
                         <RepeatIcon size={20} />
-                    </button>
-                </div>
+                    </AutoPlayButton>
+                </PlaybackControls>
 
                 {/* Volume Controls */}
                 <VolumeControl
@@ -75,8 +129,8 @@ const PlayerControls: React.FC = () => {
                     onVolumeChange={handleVolumeChange}
                     onToggleMute={toggleMute}
                 />
-            </div>
-        </div>
+            </ControlsRow>
+        </Container>
     );
 };
 

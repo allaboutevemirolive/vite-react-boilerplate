@@ -29,7 +29,7 @@ const Iframe = styled.iframe`
 const YouTubePlayer: React.FC = () => {
     const { currentSong, isPlaying } = useContext(MusicPlayerContext);
 
-    // Construct the YouTube embed URL
+    // We construct the YouTube embed URL
     const embedUrl = `https://www.youtube.com/embed/${currentSong?.videoId}?autoplay=${isPlaying ? 1 : 0}`;
 
     return (
