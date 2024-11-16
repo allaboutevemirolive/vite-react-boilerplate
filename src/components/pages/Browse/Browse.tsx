@@ -1,21 +1,18 @@
 import React from 'react';
 import { ReusableBreadcrumb } from '../../../features/AdminPanel/components/molecules/ReusableBreadcrumb';
 import { ContentLayout } from '../../../features/AdminPanel/components/templates/ContentLayout';
-import { MusicPlayer } from '../../../features/MusicPlayer/components/pages/MusicPlayer';
 
-export const Music: React.FC = () => {
+export const Browse: React.FC = () => {
 
     const breadcrumbItems = [
         { label: 'Home', href: '/' },
-        { label: 'Music', href: '/music' },      
+        { label: 'Browse', href: '/browse' },      
     ];
 
     return (
         <ContentLayout title="Discover Music">
             <ReusableBreadcrumb items={breadcrumbItems} />
-            <MusicPlayer/>
             
-            {/*<PlaceholderContent />*/}
         </ContentLayout>
     );
 };

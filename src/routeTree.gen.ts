@@ -14,6 +14,7 @@ import { Route as rootRoute } from './routes/__root'
 import { Route as PostsImport } from './routes/posts'
 import { Route as MusicImport } from './routes/music'
 import { Route as DashboardImport } from './routes/dashboard'
+import { Route as BrowseImport } from './routes/browse'
 import { Route as AboutImport } from './routes/about'
 
 // Create/Update Routes
@@ -33,6 +34,11 @@ const DashboardRoute = DashboardImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
+const BrowseRoute = BrowseImport.update({
+  path: '/browse',
+  getParentRoute: () => rootRoute,
+} as any)
+
 const AboutRoute = AboutImport.update({
   path: '/about',
   getParentRoute: () => rootRoute,
@@ -47,6 +53,13 @@ declare module '@tanstack/react-router' {
       path: '/about'
       fullPath: '/about'
       preLoaderRoute: typeof AboutImport
+      parentRoute: typeof rootRoute
+    }
+    '/browse': {
+      id: '/browse'
+      path: '/browse'
+      fullPath: '/browse'
+      preLoaderRoute: typeof BrowseImport
       parentRoute: typeof rootRoute
     }
     '/dashboard': {
@@ -77,6 +90,7 @@ declare module '@tanstack/react-router' {
 
 export const routeTree = rootRoute.addChildren({
   AboutRoute,
+  BrowseRoute,
   DashboardRoute,
   MusicRoute,
   PostsRoute,
@@ -91,6 +105,7 @@ export const routeTree = rootRoute.addChildren({
       "filePath": "__root.ts",
       "children": [
         "/about",
+        "/browse",
         "/dashboard",
         "/music",
         "/posts"
@@ -98,6 +113,9 @@ export const routeTree = rootRoute.addChildren({
     },
     "/about": {
       "filePath": "about.ts"
+    },
+    "/browse": {
+      "filePath": "browse.ts"
     },
     "/dashboard": {
       "filePath": "dashboard.ts"

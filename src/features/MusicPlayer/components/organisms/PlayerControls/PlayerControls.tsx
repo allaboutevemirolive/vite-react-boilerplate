@@ -1,137 +1,61 @@
 import React, { useContext } from 'react';
-import styled from 'styled-components';
-import { MusicPlayerContext } from '../../../store/MusicPlayerContext';
+import { RepeatIcon } from 'lucide-react';
 import { SkipButton } from '../../molecules/SkipButton';
 import { PlayPauseButton } from '../../molecules/PlayPauseButton';
-import { ProgressBar } from '../../molecules/ProgressBar';
-import { VolumeControl } from '../../molecules/VolumeControl';
-import { RepeatIcon } from 'lucide-react';
-
-const Container = styled.div`
-    height: 8rem; // 128px = 8rem
-    background-color: #1f2937; // gray-900
-    border-top: 1px solid #2d3748; // gray-800
-    padding: 0.75rem 1.5rem; // py-3 px-6
-    display: flex;
-    flex-direction: column;
-`;
-
-const ControlsRow = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 1rem; // mt-4
-`;
-
-const SongInfo = styled.div`
-    display: flex;
-    align-items: center;
-    gap: 1rem; // space-x-4
-`;
-
-const SongImage = styled.img`
-    width: 3rem; // w-12
-    height: 3rem; // h-12
-    border-radius: 0.5rem; // rounded-lg
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); // shadow-lg
-`;
-
-const SongDetails = styled.div`
-    max-width: 12.5rem; // max-w-[200px]
-`;
-
-const SongTitle = styled.div`
-    font-weight: 500; // font-medium
-    color: white;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-`;
-
-const SongArtist = styled.div`
-    color: #9ca3af; // text-gray-400
-    font-size: 0.875rem; // text-sm
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-`;
-
-const PlaybackControls = styled.div`
-    display: flex;
-    align-items: center;
-    gap: 1.5rem; // space-x-6
-`;
-
-const AutoPlayButton = styled.button`
-    color: #9ca3af; // text-gray-400
-    transition: color 0.2s ease;
-
-    &:hover {
-        color: white;
-    }
-
-    &.active {
-        color: white;
-    }
-`;
+import { MusicPlayerContext } from '../../../store/MusicPlayerContext';
 
 const PlayerControls: React.FC = () => {
+    const context = useContext(MusicPlayerContext);
+
+    if (!context) return null;
+
     const {
         currentSong,
         isPlaying,
-        currentTime,
-        duration,
-        volume,
-        isMuted,
         isAutoPlayEnabled,
         togglePlayPause,
         handlePrevious,
         handleNext,
-        handleSeek,
-        handleVolumeChange,
-        toggleMute,
         toggleAutoPlay,
-    } = useContext(MusicPlayerContext);
+    } = context;
 
     return (
-        <Container>
-            <ProgressBar currentTime={currentTime} duration={duration} onSeek={handleSeek} />
-
-            <ControlsRow>
-                {/* Song Info */}
-                <SongInfo>
-                    <SongImage src="/api/placeholder/48/48" alt={`${currentSong?.title} artwork`} />
-                    <SongDetails>
-                        <SongTitle>{currentSong?.title}</SongTitle>
-                        <SongArtist>{currentSong?.artist}</SongArtist>
-                    </SongDetails>
-                </SongInfo>
-
-                {/* Playback Controls */}
-                <PlaybackControls>
-                    <SkipButton direction="previous" onClick={handlePrevious} />
-                    <PlayPauseButton isPlaying={isPlaying} onClick={togglePlayPause} />
-                    <SkipButton direction="next" onClick={handleNext} />
-                    <AutoPlayButton
-                        onClick={toggleAutoPlay}
-                        className={isAutoPlayEnabled ? 'active' : ''}
-                        aria-label="Toggle autoplay"
-                        title="Toggle autoplay"
-                    >
-                        <RepeatIcon size={20} />
-                    </AutoPlayButton>
-                </PlaybackControls>
-
-                {/* Volume Controls */}
-                <VolumeControl
-                    volume={volume}
-                    isMuted={isMuted}
-                    onVolumeChange={handleVolumeChange}
-                    onToggleMute={toggleMute}
+        <div className="h-24 bg-background border-t border-border px-6 flex items-center justify-between">
+            {/* Song Info */}
+            <div className="flex items-center gap-4">
+                <img
+                    src={currentSong?.artist || '/api/placeholder/48/48'}
+                    alt={`${currentSong?.title || 'Unknown'} artwork`}
+                    className="w-12 h-12 rounded-md shadow-md"
                 />
-            </ControlsRow>
-        </Container>
+                <div className="max-w-xs">
+                    <div className="text-foreground font-medium truncate">
+                        {currentSong?.title || 'Unknown Title'}
+                    </div>
+                    <div className="text-muted-foreground text-sm truncate">
+                        {currentSong?.artist || 'Unknown Artist'}
+                    </div>
+                </div>
+            </div>
+
+            {/* Playback Controls */}
+            <div className="flex items-center gap-6 justify-center">
+                <SkipButton direction="previous" onClick={handlePrevious} />
+                <PlayPauseButton isPlaying={isPlaying} onClick={togglePlayPause} />
+                <SkipButton direction="next" onClick={handleNext} />
+                <button
+                    onClick={toggleAutoPlay}
+                    className={`p-2 rounded hover:text-foreground ${isAutoPlayEnabled ? 'text-foreground' : 'text-muted-foreground'
+                        }`}
+                    aria-label="Toggle autoplay"
+                    title="Toggle autoplay"
+                >
+                    <RepeatIcon size={20} />
+                </button>
+            </div>
+        </div>
     );
 };
 
 export default PlayerControls;
+

@@ -1,8 +1,6 @@
-// plop-templates/component.tsx.hbs
 import React from 'react';
-
+import styled from 'styled-components';
 import { LayoutGrid, LogOut, User } from "lucide-react";
-
 import { Button } from "../../../../../ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "../../../../../ui/avatar";
 import {
@@ -21,7 +19,67 @@ import {
     DropdownMenuTrigger
 } from "../../../../../ui/dropdown-menu";
 import { Link } from '@tanstack/react-router';
-// import { DropdownMenu } from '../../../../../ui/dropdown-menu';
+
+// Styled Components
+const StyledButton = styled(Button)`
+    position: relative;
+    height: 2rem; // Assuming '8' translates to 2rem
+    width: 2rem;
+    border-radius: 50%;
+`;
+
+const StyledAvatar = styled(Avatar)`
+    height: 2rem;
+    width: 2rem;
+`;
+
+const StyledAvatarFallback = styled(AvatarFallback)`
+    background-color: transparent;
+`;
+
+const StyledDropdownMenuContent = styled(DropdownMenuContent)`
+    width: 14rem; // Assuming '56' translates to 14rem
+`;
+
+const StyledDropdownMenuLabel = styled(DropdownMenuLabel)`
+    font-weight: normal;
+`;
+
+const UserInfo = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem; // Assuming '1' translates to 0.25rem
+`;
+
+const Name = styled.p`
+    font-size: 0.875rem; // Assuming 'sm' translates to 0.875rem
+    font-weight: 500;
+    line-height: 1;
+`;
+
+const Email = styled.p`
+    font-size: 0.75rem; // Assuming 'xs' translates to 0.75rem
+    line-height: 1;
+    color: var(--muted-foreground); // Assuming you have a CSS variable for muted foreground
+`;
+
+const StyledDropdownMenuItem = styled(DropdownMenuItem)`
+    &:hover {
+        cursor: pointer;
+    }
+`;
+
+const StyledLink = styled(Link)`
+    display: flex;
+    align-items: center;
+`;
+
+const Icon = styled.svg` // Assuming Lucide icons are SVGs
+    width: 1rem; // Assuming '4' translates to 1rem
+    height: 1rem;
+    margin-right: 0.75rem; // Assuming '3' translates to 0.75rem
+    color: var(--muted-foreground);
+`;
 
 export const UserNav: React.FC = () => {
     return (
@@ -30,51 +88,46 @@ export const UserNav: React.FC = () => {
                 <Tooltip delayDuration={100}>
                     <TooltipTrigger asChild>
                         <DropdownMenuTrigger asChild>
-                            <Button
-                                variant="outline"
-                                className="relative h-8 w-8 rounded-full"
-                            >
-                                <Avatar className="h-8 w-8">
+                            <StyledButton variant="outline">
+                                <StyledAvatar>
                                     <AvatarImage src="#" alt="Avatar" />
-                                    <AvatarFallback className="bg-transparent">JD</AvatarFallback>
-                                </Avatar>
-                            </Button>
+                                    <StyledAvatarFallback>JD</StyledAvatarFallback>
+                                </StyledAvatar>
+                            </StyledButton>
                         </DropdownMenuTrigger>
                     </TooltipTrigger>
                     <TooltipContent side="bottom">Profile</TooltipContent>
                 </Tooltip>
             </TooltipProvider>
 
-            <DropdownMenuContent className="w-56" align="end" forceMount>
-                <DropdownMenuLabel className="font-normal">
-                    <div className="flex flex-col space-y-1">
-                        <p className="text-sm font-medium leading-none">John Doe</p>
-                        <p className="text-xs leading-none text-muted-foreground">
-                            johndoe@example.com
-                        </p>
-                    </div>
-                </DropdownMenuLabel>
+            <StyledDropdownMenuContent align="end" forceMount>
+                <StyledDropdownMenuLabel>
+                    <UserInfo>
+                        <Name>John Doe</Name>
+                        <Email>johndoe@example.com</Email>
+                    </UserInfo>
+                </StyledDropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <DropdownMenuGroup>
-                    <DropdownMenuItem className="hover:cursor-pointer" asChild>
-                        <Link href="/dashboard" className="flex items-center">
-                            <LayoutGrid className="w-4 h-4 mr-3 text-muted-foreground" />
+                    <StyledDropdownMenuItem asChild>
+                        <StyledLink href="/dashboard">
+                            <Icon as={LayoutGrid} />
                             Dashboard
-                        </Link>
-                    </DropdownMenuItem>
-                    <DropdownMenuItem className="hover:cursor-pointer" asChild>
-                        <Link href="/account" className="flex items-center">
-                            <User className="w-4 h-4 mr-3 text-muted-foreground" />
+                        </StyledLink>
+                    </StyledDropdownMenuItem>
+                    <StyledDropdownMenuItem asChild>
+                        <StyledLink href="/account">
+                            <Icon as={User} />
                             Account
-                        </Link>
-                    </DropdownMenuItem>
+                        </StyledLink>
+                    </StyledDropdownMenuItem>
                 </DropdownMenuGroup>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem className="hover:cursor-pointer" onClick={() => { }}>
-                    <LogOut className="w-4 h-4 mr-3 text-muted-foreground" />
+                <StyledDropdownMenuItem onClick={() => { }}>
+                    <Icon as={LogOut} />
                     Sign out
-                </DropdownMenuItem>
-            </DropdownMenuContent>
+                </StyledDropdownMenuItem>
+            </StyledDropdownMenuContent>
         </DropdownMenu>
     );
 };

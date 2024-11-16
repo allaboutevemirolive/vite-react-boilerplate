@@ -1,11 +1,11 @@
 import React from 'react';
-import { Dashboard } from '../../components/pages/Dashboard/Dashboard';
 import { AdminPanelLayout } from '../../features/AdminPanel/components/templates/AdminPanelLayout';
+import { Browse } from '../../components/pages/Browse';
 
-export const DashboardPage: React.FC = () => {
+export const BrowsePage: React.FC = () => {
     return (
         <AdminPanelLayout>
-            <Dashboard />
+            <Browse />
         </AdminPanelLayout>
     );
 };
