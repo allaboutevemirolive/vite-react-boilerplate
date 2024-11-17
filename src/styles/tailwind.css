@@ -3,75 +3,143 @@
 @tailwind utilities;
 
 @layer base {
+    * {
+        @apply border-border;
+        transition: background-color 0.4s ease-out, color 0.3s ease-out;
+    }
+
+    body {
+        @apply bg-background text-foreground text-comfort-base leading-comfort tracking-comfort;
+    }
+
+    /* Enhanced text readability for long-form content */
+    .prose {
+        @apply text-comfort-lg leading-comfort tracking-comfort;
+    }
+
     :root {
-        --background: 0 0% 100%;
-        --foreground: 240 10% 3.9%;
-
-        --card: 0 0% 100%;
-        --card-foreground: 240 10% 3.9%;
-
-        --popover: 0 0% 100%;
-        --popover-foreground: 240 10% 3.9%;
-
-        --primary: 240 5.9% 10%;
-        --primary-foreground: 0 0% 98%;
-
-        --secondary: 240 4.8% 95.9%;
-        --secondary-foreground: 240 5.9% 10%;
-
-        --muted: 240 4.8% 95.9%;
-        --muted-foreground: 240 3.8% 46.1%;
-
-        --accent: 240 4.8% 95.9%;
-        --accent-foreground: 240 5.9% 10%;
-
-        --destructive: 0 84.2% 60.2%;
-        --destructive-foreground: 0 0% 98%;
-
-        --border: 240 5.9% 90%;
-        --input: 240 5.9% 90%;
-        --ring: 240 10% 3.9%;
+        /* Light mode - warm, gentle colors optimized for eye comfort */
+        --background: 35 25% 96%;
+        --foreground: 220 25% 25%;
+        --card: 35 25% 95%;
+        --card-foreground: 220 25% 25%;
+        --popover: 35 25% 97%;
+        --popover-foreground: 220 25% 25%;
+        --primary: 206 65% 45%;
+        --primary-foreground: 220 25% 98%;
+        --secondary: 220 16% 92%;
+        --secondary-foreground: 220 25% 25%;
+        --muted: 220 16% 95%;
+        --muted-foreground: 220 25% 45%;
+        --accent: 220 18% 88%;
+        --accent-foreground: 220 25% 25%;
+        --destructive: 0 70% 45%;
+        --destructive-foreground: 220 25% 98%;
+        --border: 220 16% 86%;
+        --input: 220 16% 86%;
+        --ring: 206 65% 45%;
 
         --radius: 0.5rem;
     }
 
     .dark {
-        --background: 240 10% 3.9%;
-        --foreground: 0 0% 98%;
-
-        --card: 240 10% 3.9%;
-        --card-foreground: 0 0% 98%;
-
-        --popover: 240 10% 3.9%;
-        --popover-foreground: 0 0% 98%;
-
-        --primary: 0 0% 98%;
-        --primary-foreground: 240 5.9% 10%;
-
-        --secondary: 240 3.7% 15.9%;
-        --secondary-foreground: 0 0% 98%;
-
-        --muted: 240 3.7% 15.9%;
-        --muted-foreground: 240 5% 64.9%;
-
-        --accent: 240 3.7% 15.9%;
-        --accent-foreground: 0 0% 98%;
-
-        --destructive: 0 62.8% 30.6%;
-        --destructive-foreground: 0 0% 98%;
-
-        --border: 240 3.7% 15.9%;
-        --input: 240 3.7% 15.9%;
-        --ring: 240 4.9% 83.9%;
+        /* Dark mode - deep, soft colors optimized for night viewing */
+        --background: 222 14% 18%;
+        --foreground: 220 15% 90%;
+        --card: 222 14% 22%;
+        --card-foreground: 220 15% 90%;
+        --popover: 222 14% 20%;
+        --popover-foreground: 220 15% 90%;
+        --primary: 206 55% 65%;
+        --primary-foreground: 220 15% 98%;
+        --secondary: 222 18% 32%;
+        --secondary-foreground: 220 15% 90%;
+        --muted: 222 16% 25%;
+        --muted-foreground: 220 15% 70%;
+        --accent: 222 22% 35%;
+        --accent-foreground: 220 15% 90%;
+        --destructive: 0 60% 60%;
+        --destructive-foreground: 220 15% 90%;
+        --border: 222 16% 28%;
+        --input: 222 16% 28%;
+        --ring: 206 55% 65%;
     }
 }
 
+/* Enhanced utilities for eye comfort */
+@layer utilities {
+
+    /* Background opacity utilities */
+    .bg-opacity-comfort {
+        @apply bg-opacity-90;
+    }
+
+    .text-opacity-comfort {
+        @apply text-opacity-90;
+    }
+
+    /* Comfortable text styles */
+    .text-comfort {
+        @apply text-comfort-base tracking-comfort leading-comfort;
+    }
+
+    .text-comfort-large {
+        @apply text-comfort-lg tracking-comfort leading-comfort;
+    }
+
+    /* Comfort blur effect */
+    .blur-comfort {
+        @apply blur-comfort;
+    }
+
+    /* Container comfort padding */
+    .container-comfort {
+        @apply px-4 py-6 md:px-6 md:py-8;
+    }
+
+    /* Dark mode specific comfort adjustments */
+    .dark .dark-comfort {
+        @apply bg-opacity-95 transition-all duration-300;
+    }
+}
+
+/* Enhanced base styles for better readability */
 @layer base {
-    * {
-        @apply border-border;
+    html {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-rendering: optimizeLegibility;
+        @apply scroll-smooth;
+    }
+
+    /* Focus styles for accessibility */
+    :focus-visible {
+        @apply outline-2 outline-offset-2 outline-primary transition-none;
+    }
+
+    /* Reduced motion preferences */
+    @media (prefers-reduced-motion: reduce) {
+        * {
+            transition-duration: 0.01ms !important;
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            scroll-behavior: auto !important;
+        }
+    }
+
+    /* Selection styling */
+    ::selection {
+        @apply bg-primary/20 text-foreground;
+    }
+}
+
+/* Print optimization */
+@media print {
+    .no-print {
+        display: none !important;
     }
 
     body {
-        @apply bg-background text-foreground;
+        @apply text-black bg-white;
     }
 }

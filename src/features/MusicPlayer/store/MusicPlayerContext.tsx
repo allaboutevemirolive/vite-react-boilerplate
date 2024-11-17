@@ -1,6 +1,7 @@
 import React, { createContext, useState, useRef, useEffect, ReactNode } from 'react';
 import { Song } from '../components/organisms/PlaylistItem/types';
 import { PLAYLIST_DATA } from '../constants/playlistData';
+import { isString } from 'util';
 
 interface MusicPlayerContextProps {
     songs: Song[];
@@ -26,18 +27,10 @@ const DEFAULT_SONG: Song = {
     id: '0',
     title: 'Unknown Song',
     artist: 'Unknown Artist',
-    videoId: ''
+    duration: '0',
+    liked: false,
+    videoId: '',
 };
-
-// export const PLAYLIST_DATA: Song[] = [
-//     { id: '1', title: 'Sample Song', artist: 'Sample Artist', videoId: 'CanCZktm0TQ' },
-//     // { id: '2', title: 'Another Song', artist: 'Another Artist', videoId: 'dQw4w9WgXcQ' },
-//     { id: '3', title: 'Strip That Down', artist: 'Liam Payne Featuring Quavo', videoId: 'vSW2M-BB1NE' },
-//     { id: '4', title: 'Chandelier', artist: 'Sia', videoId: '2vjPBrBU-TM' },
-//     { id: '5', title: 'Side To Side', artist: 'Ariana Grande Featuring Nicki Minaj', videoId: 'SXiSVQZLje8' },
-//     { id: '6', title: 'The Monster', artist: 'Eminem Featuring Rihanna', videoId: 'EHkozMIXZ8w' },
-//     { id: '7', title: 'Dusk Till Dawn', artist: 'ZAYN Featuring Sia', videoId: 'tt2k8PGm-TI' }
-// ];
 
 export const MusicPlayerContext = createContext<MusicPlayerContextProps>({} as MusicPlayerContextProps);
 
