@@ -1,7 +1,6 @@
 import React, { createContext, useState, useRef, useEffect, ReactNode } from 'react';
 import { Song } from '../components/organisms/PlaylistItem/types';
 import { PLAYLIST_DATA } from '../constants/playlistData';
-import { isString } from 'util';
 
 interface MusicPlayerContextProps {
     songs: Song[];

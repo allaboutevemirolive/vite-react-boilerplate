@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { MusicPlayer } from "../../../features/MusicPlayer/components/pages/MusicPlayer";
-import { PlaylistView } from "../../../features/PlaylistView/components/pages/PlaylistView";
+import { PlaylistView } from "../../../features/PlaylistView/components/organisms/PlaylistView";
+// import { PlaylistView } from "../../../features/PlaylistView/components/pages/PlaylistView";
 
 const MusicLayoutContainer = styled.div`
   display: flex;
